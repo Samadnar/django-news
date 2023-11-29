@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ new.title }}</h1>
+<h2>{{ new.create_at }}</h2>
+<img src="{{new.img.url}}" alt="">
+<br><br>
+
+{% if request.user == new.user or request.user.is_superuser %}
+<a href="{% url "new_update" new.id %}">Update</a>
+<form method="POST" action="{% url "new_delete" new.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+{% endif %}
+
+<br><br><br>
+<h1>Recommends</h1>
+{% for i in category_new %}
+    {% if new.id != i.id %}
+        <a href="{% url "detail" i.id %}">{{ i.title }}</a><br><br>
+
+    {% endif %}
+{% endfor %}
+</h3>
+
+<br><br><br>
+{% for i in tag_new %}
+    {% for j in i %}
+        {% if new.id != j.id and category_new.values.id != j.id and new.id != category_new.id %}
+            <a href="{% url "detail" j.id %}">{{ j.title }}</a><br><br>
+        {% endif %}
+
+    {% endfor %}
+
+
+{% endfor %}    
+
+{% endblock content %}

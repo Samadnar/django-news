@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="contact_section">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Biz bilan aloqaga chiqing!
+        </h2>
+      </div>
+    </div>
+    <div class="container contact_bg layout_padding2-top">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="contact_form ">
+            <form action="" method="post">
+              {% csrf_token %}
+              <input type="text" placeholder="Ism" name="name">
+              <input type="email" placeholder="Email" name="email">
+              <input type="text" placeholder="Xabar" class="message_input" name="message">
+
+              <button type="submit">
+                Jo'natish
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="https://burst.shopifycdn.com/photos/contact-us-image.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="" width="500px" height="300px">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}

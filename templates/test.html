@@ -1,0 +1,9 @@
+<div>   
+    <h1>Category</h1>
+        <div class="flex">
+            {% for i in category %}
+        
+                <a href="{% url 'category' i.id%}" class = "mr">{{ i.name }}</a>
+            {% endfor %}
+        </div>
+</div>    
